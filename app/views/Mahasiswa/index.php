@@ -3,12 +3,26 @@
     <div class="col-lg-6">
     <?php Flasher::flash(); ?>
     </div>
+    <div class="row">
+      <div class="col-lg-6">
+         <button class="btn btn-success mb-3 tambahData" type="button" data-bs-toggle="modal"
+          data-bs-target="#formModal">Tambah Mahasiswa</button>
+
+      </div>
+      <div class="col-lg-6">
+        <form action="<?= BASEURL;?>/Mahasiswa/cari" method="post">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Cari Mahasiswa" name="keyword" id="keyword" autocomplete="off" aria-label="Recipient’s username" aria-describedby="button-addon2">
+            <button class="btn btn-primary" type="submit" id="searchButton">Search</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
   </div>
     <div class='col-lg-6'>
-        <h1>Daftar Mahasiswa</h1>
-        <br>
-        <button class="btn btn-success mb-3 tambahData" type="button" data-bs-toggle="modal" data-bs-target="#formModal">Tambah Mahasiswa</button>
-
+        <h1 class="mb-3">Daftar Mahasiswa</h1>
+        
             <ul>
             <?php foreach( $data['mahasiswa'] as $mhs ) : ?>
                 <li class ="bg-gray-200 p-2 mb-2"><?= $mhs['nama']; ?>

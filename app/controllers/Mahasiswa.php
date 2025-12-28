@@ -54,5 +54,13 @@ class Mahasiswa extends Controller{
             exit;
         }
     }
+    public function cari(){
+         $data['judul'] = 'Daftar Mahasiswa';
+        $data['mahasiswa'] = $this->model('Mahasiswa_model')->cariMahasiswa();
+        $this->view('templates/header', $data);
+        $this->view('Mahasiswa/index', $data);
+        $this->view('templates/footer');
+
+    }
 
 }
