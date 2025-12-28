@@ -7,7 +7,7 @@
     <div class='col-lg-6'>
         <h1>Daftar Mahasiswa</h1>
         <br>
-        <button class="btn btn-success mb-3" type="button" data-bs-toggle="modal" data-bs-target="#formModal">Tambah Mahasiswa</button>
+        <button class="btn btn-success mb-3 tambahData" type="button" data-bs-toggle="modal" data-bs-target="#formModal">Tambah Mahasiswa</button>
 
             <ul>
             <?php foreach( $data['mahasiswa'] as $mhs ) : ?>
@@ -15,6 +15,9 @@
                 <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']?>" 
                 class="text-red-600 text-right float-right ms-2"
                 onclick="return confirm('sure?');">hapus</a>
+                <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']?>" 
+                class="text-yellow-600 text-right float-right ms-2 modalUbah"  data-bs-toggle="modal" data-bs-target="#formModal"
+                data-id="<?= $mhs['id'];?>">Changes</a>
                 <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']?>" 
                 class="text-blue-600 text-right float-right ms-2">detail</a>
             </li>
@@ -29,11 +32,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="judulModal">Tambah Mahasiswa Baru</h1>
+        <h1 class="modal-title fs-5" id="formModalLabel">Tambah Mahasiswa Baru</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="<?= BASEURL;?>/Mahasiswa/tambah" method="post" id="formTambah">
+          <input type="hidden" name="id" id="id">
           <div class="mb-3">
             <label for="nama" >Nama</label>
             <input type="text" class="form-control" id="nama" name="nama">
